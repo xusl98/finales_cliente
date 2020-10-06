@@ -18,7 +18,7 @@ export class CompaniasService {
 
   constructor(private http: HttpClient) { }
 
-  getCompanias(page: number, pageSize: number): Observable<PageResult<Compania>>{
-    return this.http.get<PageResult<Compania>>('http://localhost:5000/api/Companias?page=' + page + '&pageSize=' + pageSize);
+  getCompanias(page: number, pageSize: number, filtro: string): Observable<PageResult<Compania>>{
+    return this.http.get<PageResult<Compania>>('http://localhost:5000/api/Companias?page=' + page + '&pageSize=' + pageSize + '&filtro=' + filtro);
   } 
 }

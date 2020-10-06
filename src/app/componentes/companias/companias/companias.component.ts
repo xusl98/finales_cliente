@@ -17,8 +17,7 @@ export class CompaniasComponent implements OnInit {
   pages = 0;
   companiasCount = 0;
 
-
-  public busqueda: string;
+  filtro: string = '';
 
   constructor(private companiasService: CompaniasService) { }
 
@@ -27,14 +26,14 @@ export class CompaniasComponent implements OnInit {
     this.cambiarPagina();
   }
 
-  onPageChange(page): void{
+  onPageChange(page): void {
     this.page = page;
     this.cambiarPagina();
   }
 
 
-  cambiarPagina(): void{
-    this.companiasService.getCompanias(this.page,this.pageSize).subscribe(companias => {
+  cambiarPagina(): void {
+    this.companiasService.getCompanias(this.page, this.pageSize, this.filtro).subscribe(companias => {
       this.companias = companias.items;
       this.companiasCount = companias.count;
       this.pages = Math.ceil(companias.count / this.pageSize);

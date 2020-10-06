@@ -6,10 +6,16 @@
         <div class="col-md-3">&nbsp;</div>
         <div class="col-md-6">
             <label for="typeahead-basic">Buscar:</label>
-            <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="busqueda" placeholder="Introduce el nombre"/>
+            <div class="row">
+                <div class="col-md-9">
+                    <input class="col-md-9" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="filtro" placeholder="Introduce el nombre"/>
+                </div>
+                <button (click)="cambiarPagina()" class="col-md-2 btn btn-outline-info">Buscar</button>
+            </div>
         </div>
         <div class="col-md-3">&nbsp;</div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-3">&nbsp;</div>
         <div class="col-md-6" style="text-align: right;">
@@ -17,6 +23,7 @@
         </div>
         <div class="col-md-3">&nbsp;</div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-3">&nbsp;</div>
         <div class="col-md-6">
