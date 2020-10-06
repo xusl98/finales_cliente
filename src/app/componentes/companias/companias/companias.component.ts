@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Compania } from '../../../models/compania';
+import { CompaniasService } from '../../../servicios/companias.service';
 
 @Component({
   selector: 'app-companias',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompaniasComponent implements OnInit {
 
-  constructor() { }
+  companias: Compania[] = [];
+
+  page = 1;
+
+  public busqueda: string;
+
+  constructor(private companiasService: CompaniasService) { }
 
   ngOnInit(): void {
+    //obtener de la bd el numero de registros para sacar la cantidad de paginas y asignarlo a una variable
+    this.companiasService.getCompanias().subscribe(companias => this.companias = companias);
   }
 
 }

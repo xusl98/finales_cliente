@@ -6,5 +6,5 @@ export class Compania{
     IATA: string;
     OACI: string;
     indicativo: string;
-    indiwebcativo: string;
+    web: string;
 }
