@@ -13,6 +13,10 @@ export class CompaniasComponent implements OnInit {
   companias: Compania[] = [];
 
   page = 1;
+  pageSize = 4;
+  pages = 0;
+  companiasCount = 0;
+
 
   public busqueda: string;
 
@@ -20,7 +24,21 @@ export class CompaniasComponent implements OnInit {
 
   ngOnInit(): void {
     //obtener de la bd el numero de registros para sacar la cantidad de paginas y asignarlo a una variable
-    this.companiasService.getCompanias().subscribe(companias => this.companias = companias);
+    this.cambiarPagina();
+  }
+
+  onPageChange(page): void{
+    this.page = page;
+    this.cambiarPagina();
+  }
+
+
+  cambiarPagina(): void{
+    this.companiasService.getCompanias(this.page,this.pageSize).subscribe(companias => {
+      this.companias = companias.items;
+      this.companiasCount = companias.count;
+      this.pages = Math.ceil(companias.count / this.pageSize);
+    });
   }
 
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Compania } from '../models/compania'
+import { Compania } from '../models/compania';
+import { PageResult } from '../models/pageResult';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,9 @@ export class CompaniasService {
     
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getCompanias(): Observable<Compania[]>{
-    return of(this.companias);
-  }
+  getCompanias(page: number, pageSize: number): Observable<PageResult<Compania>>{
+    return this.http.get<PageResult<Compania>>('http://localhost:5000/api/Companias?page=' + page + '&pageSize=' + pageSize);
+  } 
 }
