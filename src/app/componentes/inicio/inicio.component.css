@@ -1,0 +1,12 @@
+img{
+    width: 100vw;
+    height: 100vh;
+}
+#jumbo{
+    position: absolute !important;
+    top: 20%;
+    width: 100vw;
+}
+#inJumbo{
+    background-color: rgba(233, 236, 239, 0.8);
+}

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'finales-cliente';
+
+  quitarTabActiva(): void{
+    document.querySelector('a.active').classList.remove("active");
+  }
 }

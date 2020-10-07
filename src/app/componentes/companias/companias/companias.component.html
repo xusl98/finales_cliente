@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1 style="width: 100%; text-align: center;">Compañías</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <label for="typeahead-basic">Buscar:</label>
+            <div class="row">
+                <div class="col-md-9">
+                    <input class="col-md-9" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="filtro" placeholder="Introduce el nombre"/>
+                </div>
+                <button (click)="cambiarPagina()" class="col-md-2 btn btn-outline-info">Buscar</button>
+            </div>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6" style="text-align: right;">
+            <button routerLink="/compania/-1" class="btn btn-outline-primary">Nueva</button>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">OACI</th>
+                        <th scope="col">Compañía</th>
+                        <th scope="col">Indicativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let compania of companias; index as i" routerLink="/compania/{{ compania.id }}">
+                        <!-- <th scope="row">{{ i + 1 }}</th> -->
+                        <td>{{ compania.oaci }}</td>
+                        <td>{{ compania.nombre }}</td>
+                        <td>{{ compania.indicativo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination (pageChange)="onPageChange($event)" [collectionSize]="companiasCount" [pageSize]="pageSize" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+</div>
