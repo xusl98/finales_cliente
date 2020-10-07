@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CompaniasDetailComponent } from './componentes/companias/companias-detail/companias-detail.component';
 import { TiposAvionesComponent } from './componentes/tipos-aviones/tipos-aviones/tipos-aviones.component';
+import { TiposAvionesDetailComponent } from './componentes/tipos-aviones/tipos-aviones-detail/tipos-aviones-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TiposAvionesComponent } from './componentes/tipos-aviones/tipos-aviones
     InicioComponent,
     CompaniasComponent,
     CompaniasDetailComponent,
-    TiposAvionesComponent
+    TiposAvionesComponent,
+    TiposAvionesDetailComponent
   ],
   imports: [
     BrowserModule,

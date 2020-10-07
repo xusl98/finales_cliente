@@ -21,7 +21,7 @@ export class CompaniasDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private companiasService: CompaniasService,
     private modalService: NgbModal,
-    private location: Location ,
+    private location: Location,
     private router: Router
   ) { }
 
@@ -39,18 +39,18 @@ export class CompaniasDetailComponent implements OnInit {
         Object.assign(this.copiaCompania, this.compania);
         console.log(this.compania)
         console.log(this.compania.iata)
-        this.titulo = 'Editar compañía: ' + this.compania.nombre;
+        this.titulo = 'Compañía: ' + this.compania.nombre;
       });
     }
   }
 
 
-  cambiarTipo(tipo: string): void{
+  cambiarTipo(tipo: string): void {
     this.tipo = tipo;
   }
 
-  cancelar(): void{
-    if (this.tipo == 'EDIT'){
+  cancelar(): void {
+    if (this.tipo == 'EDIT') {
       this.cambiarTipo('DETAIL');
       Object.assign(this.compania, this.copiaCompania);
     } else {
@@ -58,7 +58,7 @@ export class CompaniasDetailComponent implements OnInit {
     }
   }
 
-  async abrirModal()  {
+  async abrirModal() {
     const modalRef = this.modalService.open(NgbdModalBorrado);
     if (await modalRef.result === 'borrar') {
       this.companiasService.eliminarCompania(this.compania.id).subscribe();
@@ -66,7 +66,7 @@ export class CompaniasDetailComponent implements OnInit {
     }
   }
 
-  guardar(): void{
+  guardar(): void {
     if (this.tipo == 'EDIT') {
       this.companiasService.actualizarCompania(this.compania).subscribe(compania => {
         this.location.back();
@@ -79,10 +79,10 @@ export class CompaniasDetailComponent implements OnInit {
     }
   }
 
-  volver(): void{
+  volver(): void {
     this.location.back();
   }
-  
+
 
 }
 
@@ -108,6 +108,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   `
 })
 export class NgbdModalBorrado {
-  constructor(public modal: NgbActiveModal) {}
+  constructor(public modal: NgbActiveModal) { }
 
 }

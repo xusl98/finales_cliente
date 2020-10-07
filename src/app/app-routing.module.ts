@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CompaniasDetailComponent } from './componentes/companias/companias-detail/companias-detail.component';
 import { CompaniasComponent } from './componentes/companias/companias/companias.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { TiposAvionesDetailComponent } from './componentes/tipos-aviones/tipos-aviones-detail/tipos-aviones-detail.component';
 import { TiposAvionesComponent } from './componentes/tipos-aviones/tipos-aviones/tipos-aviones.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'companias', component: CompaniasComponent },
   { path: 'compania/:id', component: CompaniasDetailComponent },
   { path: 'tipos-aviones', component: TiposAvionesComponent },
+  { path: 'tipo-avion/:id', component: TiposAvionesDetailComponent },
 ];
 
 @NgModule({
