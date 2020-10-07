@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1 id="tituloCompanias" style="width: 100%; text-align: center;">Tipos de Aviones</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <label for="typeahead-basic">Buscar:</label>
+            <div class="row">
+                <div class="col-md-9">
+                    <input class="col-md-9" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="filtro"
+                        placeholder="Introduce el fabricante" />
+                </div>
+                <button (click)="cambiarPagina()" class="col-md-2 btn btn-outline-info">Buscar</button>
+            </div>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6" style="text-align: right;">
+            <button id="btnNuevo" routerLink="/tipo-avion/-1" class="btn btn-outline-primary">Nuevo</button>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Fabricante</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Alcance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tipoAvion of tiposAviones; index as i" class="valores" routerLink="/tipo-avion/{{ tipoAvion.id }}">
+                        <td>{{ tipoAvion.fabricante }}</td>
+                        <td>{{ tipoAvion.modelo }}</td>
+                        <td>{{ tipoAvion.tipo }}</td>
+                        <td>{{ tipoAvion.alcance }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination (pageChange)="onPageChange($event)" [collectionSize]="tiposAvionesCount" [pageSize]="pageSize"
+                [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+</div>
