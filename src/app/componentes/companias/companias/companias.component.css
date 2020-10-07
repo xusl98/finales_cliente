@@ -1,0 +1,4 @@
+.valores:hover td{
+    cursor: pointer;
+    background-color: lightblue;
+}
