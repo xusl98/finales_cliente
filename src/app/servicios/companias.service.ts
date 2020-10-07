@@ -25,4 +25,16 @@ export class CompaniasService {
   getCompania(id: number): Observable<Compania>{
     return this.http.get<Compania>('http://localhost:5000/api/Companias/' + id);
   }
+
+  crearCompania(compania: Compania): Observable<Compania>{
+    return this.http.post<Compania>('http://localhost:5000/api/Companias', compania);
+  }
+
+  actualizarCompania(compania: Compania): Observable<Compania>{
+    return this.http.put<Compania>('http://localhost:5000/api/Companias', compania);
+  }
+
+  eliminarCompania(id: number): Observable<Compania>{
+    return this.http.delete<Compania>('http://localhost:5000/api/Companias/' + id);
+  }
 }

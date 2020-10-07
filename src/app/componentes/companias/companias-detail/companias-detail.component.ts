@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Compania } from 'src/app/models/compania';
 import { CompaniasService } from 'src/app/servicios/companias.service';
 
@@ -19,7 +20,9 @@ export class CompaniasDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private companiasService: CompaniasService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private location: Location ,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,13 +50,39 @@ export class CompaniasDetailComponent implements OnInit {
   }
 
   cancelar(): void{
-    this.cambiarTipo('DETAIL');
-    Object.assign(this.compania, this.copiaCompania);
+    if (this.tipo == 'EDIT'){
+      this.cambiarTipo('DETAIL');
+      Object.assign(this.compania, this.copiaCompania);
+    } else {
+      this.volver();
+    }
   }
 
-  abrirModal() {
-    this.modalService.open(NgbdModalBorrado);
+  async abrirModal()  {
+    const modalRef = this.modalService.open(NgbdModalBorrado);
+    if (await modalRef.result === 'borrar') {
+      this.companiasService.eliminarCompania(this.compania.id).subscribe();
+      this.volver();
+    }
   }
+
+  guardar(): void{
+    if (this.tipo == 'EDIT') {
+      this.companiasService.actualizarCompania(this.compania).subscribe(compania => {
+        this.location.back();
+      });
+    } else if (this.tipo == 'NEW') {
+      this.compania.activo = true;
+      this.companiasService.crearCompania(this.compania).subscribe(compania => {
+        this.location.back();
+      });
+    }
+  }
+
+  volver(): void{
+    this.location.back();
+  }
+  
 
 }
 
@@ -74,10 +103,11 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancelar</button>
-    <button type="button" class="btn btn-danger">Eliminar</button>
+    <button (click)="modal.close('borrar')" type="button" class="btn btn-danger">Eliminar</button>
   </div>
   `
 })
 export class NgbdModalBorrado {
   constructor(public modal: NgbActiveModal) {}
+
 }

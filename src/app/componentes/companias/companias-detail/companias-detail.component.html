@@ -46,7 +46,7 @@
                     <div class="form-group row">
                         <label for="inputTlf" class="col-sm-2 col-form-label">Teléfono:</label>
                         <div class="col-sm-10">
-                            <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="compania.telefono" type="text"
+                            <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="compania.telefono" type="number"
                                 class="form-control" id="inputTlf">
                         </div>
                     </div>
@@ -78,9 +78,9 @@
     </div>
     <div id="botones" class="row">
         <div class="col-md-10">
-            <button (click)="cancelar()" *ngIf="tipo == 'EDIT'" class="btn btn-outline-secondary">Cancelar</button>
+            <button (click)="cancelar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-secondary">Cancelar</button>
             <span *ngIf="tipo == 'DETAIL'">
-                <button class="btn btn-outline-secondary">Volver</button>
+                <button (click)="volver()" class="btn btn-outline-secondary">Volver</button>
                 &nbsp;
                 <button (click)="abrirModal()" class="btn btn-outline-danger">Eliminar</button>
                 &nbsp;
@@ -88,7 +88,10 @@
             </span>
         </div>
         <div class="col-md-2">
-            <button *ngIf="tipo == 'EDIT'" class="btn btn-outline-primary">Guardar</button>
+            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-primary"
+             [disabled]="compania.iata == null || compania.oaci == null || compania.indicativo == null ||
+             compania.nombre == null || compania.telefono == null || compania.sede == null || compania.web == null"
+             >Guardar</button>
         </div>
     </div>
 </div>

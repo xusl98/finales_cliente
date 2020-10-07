@@ -7,4 +7,5 @@ export class Compania{
     oaci: string;
     indicativo: string;
     web: string;
+    activo: boolean;
 }
