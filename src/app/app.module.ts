@@ -8,12 +8,14 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { CompaniasComponent } from './componentes/companias/companias/companias.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CompaniasDetailComponent } from './componentes/companias/companias-detail/companias-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
-    CompaniasComponent
+    CompaniasComponent,
+    CompaniasDetailComponent
   ],
   imports: [
     BrowserModule,

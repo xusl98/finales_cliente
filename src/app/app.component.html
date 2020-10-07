@@ -1,21 +1,3 @@
-<!-- <ul ngbNav class="nav-pills">
-  <li ngbNavItem>
-    <a routerLink=".">Air Manager</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink routerLink=".">Dashboard</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink routerLink="actividades">Actividades</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink routerLink="flujos">Flujos</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink routerLink="ejecuciones">Ejecuciones</a>
-  </li>
-</ul>
-<router-outlet></router-outlet> -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a href="#" class="navbar-brand" (click)="quitarTabActiva()" routerLink="/inicio">AirManager</a>
@@ -32,7 +14,7 @@
         <a ngbNavLink routerLink="/companias" class="nav-link">Compañías</a>
       </li>
       <li ngbNavItem class="nav-item">
-        <a ngbNavLink routerLink="/aviones" class="nav-link">Aviones</a>
+        <a ngbNavLink routerLink="/aviones" class="nav-link">Tipos de Aviones</a>
       </li>
     </ul>
   </div>

@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-3">&nbsp;</div>
         <div class="col-md-6" style="text-align: right;">
-            <button class="btn btn-outline-primary">Nueva</button>
+            <button routerLink="/compania/-1" class="btn btn-outline-primary">Nueva</button>
         </div>
         <div class="col-md-3">&nbsp;</div>
     </div>
@@ -31,16 +31,18 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Indicativo</th>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">OACI</th>
                         <th scope="col">Compañía</th>
+                        <th scope="col">Indicativo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let compania of companias; index as i">
-                        <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ compania.indicativo }}</td>
+                    <tr *ngFor="let compania of companias; index as i" routerLink="/compania/{{ compania.id }}">
+                        <!-- <th scope="row">{{ i + 1 }}</th> -->
+                        <td>{{ compania.oaci }}</td>
                         <td>{{ compania.nombre }}</td>
+                        <td>{{ compania.indicativo }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -3,8 +3,9 @@ export class Compania{
     nombre: string;
     telefono: number;
     sede: string;
-    IATA: string;
-    OACI: string;
+    iata: string;
+    oaci: string;
     indicativo: string;
     web: string;
+    activo: boolean;
 }
