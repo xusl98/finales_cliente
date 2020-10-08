@@ -33,10 +33,10 @@ export class TiposAvionesComponent implements OnInit {
 
 
   cambiarPagina(): void {
-    this.tipoAvionService.getTiposAviones(this.page, this.pageSize, this.filtro).subscribe(companias => {
-      this.tiposAviones = companias.items;
-      this.tiposAvionesCount = companias.count;
-      this.pages = Math.ceil(companias.count / this.pageSize);
+    this.tipoAvionService.getTiposAviones(this.page, this.pageSize, this.filtro).subscribe(tiposAviones => {
+      this.tiposAviones = tiposAviones.items;
+      this.tiposAvionesCount = tiposAviones.count;
+      this.pages = Math.ceil(tiposAviones.count / this.pageSize);
     });
   }
 

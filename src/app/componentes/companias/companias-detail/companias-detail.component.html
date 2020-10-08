@@ -76,6 +76,9 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <button *ngIf="tipo=='DETAIL'" (click)="abrirModalAviones()" class="btn btn-secondary">Aviones</button>
+    </div>
     <div id="botones" class="row">
         <div class="col-md-10">
             <button id="btnCancelar" (click)="cancelar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-secondary">Cancelar</button>

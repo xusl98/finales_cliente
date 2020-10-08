@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1 id="tituloCompanias" style="width: 100%; text-align: center;">Aviones</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <label for="typeahead-basic">Buscar:</label>
+            <div class="row">
+                <div class="col-md-9">
+                    <input class="col-md-9" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="filtro"
+                        placeholder="Introduce el fabricante" />
+                </div>
+                <button (click)="cambiarPagina()" class="col-md-2 btn btn-outline-info">Buscar</button>
+            </div>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6" style="text-align: right;">
+            <button id="btnNuevo" routerLink="/avion/-1" class="btn btn-outline-primary">Nuevo</button>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Número de serie</th>
+                        <th scope="col">Tipo de avión</th>
+                        <th scope="col">Compañía</th>
+                        <th scope="col">Combustible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let avion of aviones; index as i" class="valores" routerLink="/avion/{{ avion.id }}">
+                        <td>{{ avion.numeroSerie }}</td>
+                        <td>{{ avion.tipoAvion.fabricante }} | {{ avion.tipoAvion.modelo }}</td>
+                        <td *ngIf="avion.compania">{{ avion.compania.nombre }}</td>
+                        <td *ngIf="!avion.compania">Sin Compañía</td>
+                        <td><p><ngb-progressbar type="dark" [value]="avion.combustible" [showValue]="true" [striped]="true" [animated]="false" type="warning"></ngb-progressbar></p></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination (pageChange)="onPageChange($event)" [collectionSize]="avionesCount" [pageSize]="pageSize"
+                [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+</div>

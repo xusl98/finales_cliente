@@ -65,6 +65,10 @@ export class CompaniasDetailComponent implements OnInit {
       this.volver();
     }
   }
+  async abrirModalAviones() {
+    const modalRef = this.modalService.open(ModalAvionesComponent);
+    modalRef.componentInstance.compania = this.compania;
+  }
 
   guardar(): void {
     if (this.tipo == 'EDIT') {
@@ -88,6 +92,7 @@ export class CompaniasDetailComponent implements OnInit {
 
 import { Type } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAvionesComponent } from '../Modal/modal-aviones.component';
 
 @Component({
   selector: 'ngbd-modal-borrado',

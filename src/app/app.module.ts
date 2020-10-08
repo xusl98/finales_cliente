@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CompaniasDetailComponent } from './componentes/companias/companias-detail/companias-detail.component';
 import { TiposAvionesComponent } from './componentes/tipos-aviones/tipos-aviones/tipos-aviones.component';
 import { TiposAvionesDetailComponent } from './componentes/tipos-aviones/tipos-aviones-detail/tipos-aviones-detail.component';
+import { AvionesComponent } from './componentes/aviones/aviones/aviones.component';
+import { AvionesDetailComponent } from './componentes/aviones/aviones-detail/aviones-detail.component';
+import { ModalTiposAvionesComponent } from './componentes/aviones/modales/modal-tipos-aviones/modal-tipos-aviones.component';
+import { ModalCompaniasComponent } from './componentes/aviones/modales/modal-companias/modal-companias.component';
+import { ModalAvionesComponent } from './componentes/companias/Modal/modal-aviones.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { TiposAvionesDetailComponent } from './componentes/tipos-aviones/tipos-a
     CompaniasComponent,
     CompaniasDetailComponent,
     TiposAvionesComponent,
-    TiposAvionesDetailComponent
+    TiposAvionesDetailComponent,
+    AvionesComponent,
+    AvionesDetailComponent,
+    ModalTiposAvionesComponent,
+    ModalCompaniasComponent,
+    ModalAvionesComponent
   ],
   imports: [
     BrowserModule,

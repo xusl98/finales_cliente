@@ -1,0 +1,43 @@
+<div>
+    <div class="modal-header ">
+        <h4 class="modal-title" id="modal-title">Aviones de {{ compania.nombre }}</h4>
+        <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div style="padding-left: 20%; padding-right: 20%;" class="modal-body">
+
+        <br>
+        <div class="row">
+            <div class="md-3">&nbsp;</div>
+            <div class="md-6">
+                <ngb-accordion *ngFor="let avion of aviones" #acc="ngbAccordion">
+                    <ngb-panel>
+                        <ng-template ngbPanelTitle>
+                            <div style="overflow: auto;">
+                                <span >{{ avion.numeroSerie }} | {{ avion.tipoAvion.fabricante }} | {{ avion.tipoAvion.modelo }}</span>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div>
+                                <label><strong>Combustible:
+                                    </strong></label><p class="col-sm-12"><ngb-progressbar type="dark" [value]="avion.combustible" [showValue]="true" [striped]="true" type="warning"></ngb-progressbar></p>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+                <ngb-pagination (pageChange)="onPageChange($event)" [collectionSize]="avionesCount"
+                    [pageSize]="pageSize" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false"
+                    [boundaryLinks]="true">
+                </ngb-pagination>
+            </div>
+            <div class="md-3">&nbsp;</div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary"
+            (click)="modal.dismiss('cancel click')">Cerrar</button>
+    </div>
