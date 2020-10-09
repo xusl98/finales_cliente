@@ -1,0 +1,23 @@
+.notExpanded{
+    position: absolute;
+    top:55vh;
+    left: 55vw;
+    width: 40vw;
+    height: 40vh;
+}
+.expanded{
+    position: absolute;
+    top:1vh;
+    width: 100vw;
+    height: 99vh;
+}
+#x{
+    z-index: 999;
+    cursor: pointer;
+}
+
+#container{
+    padding-top: 5vh;
+    padding-right: 10vw;
+    padding-left: 10vw;
+}
