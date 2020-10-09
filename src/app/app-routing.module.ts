@@ -7,6 +7,7 @@ import { CompaniasComponent } from './componentes/companias/companias/companias.
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { TiposAvionesDetailComponent } from './componentes/tipos-aviones/tipos-aviones-detail/tipos-aviones-detail.component';
 import { TiposAvionesComponent } from './componentes/tipos-aviones/tipos-aviones/tipos-aviones.component';
+import { PresentacionComponent } from './componentes/presentacion/presentacion.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'tipo-avion/:id', component: TiposAvionesDetailComponent },
   { path: 'aviones', component: AvionesComponent },
   { path: 'avion/:id', component: AvionesDetailComponent },
+  { path: 'presentacion', component: PresentacionComponent },
 ];
 
 @NgModule({

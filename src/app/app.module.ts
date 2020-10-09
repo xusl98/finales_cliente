@@ -18,6 +18,7 @@ import { ModalCompaniasComponent } from './componentes/aviones/modales/modal-com
 import { ModalAvionesComponent } from './componentes/companias/Modal/modal-aviones.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PresentacionComponent } from './componentes/presentacion/presentacion.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AvionesDetailComponent,
     ModalTiposAvionesComponent,
     ModalCompaniasComponent,
-    ModalAvionesComponent
+    ModalAvionesComponent,
+    PresentacionComponent
   ],
   imports: [
     BrowserModule,
