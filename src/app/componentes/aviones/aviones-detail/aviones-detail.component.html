@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputFabricante" class="col-sm-2 col-form-label">Número de serie:</label>
+                <label for="inputFabricante" class="col-sm-2 col-form-label">Número de serie: *</label>
                 <div class="col-sm-8">
                     <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="avion.numeroSerie" type="number"
                         class="form-control" id="inputFabricante">
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputModelo" class="col-sm-2 col-form-label">Tipo de avión:</label>
+                <label for="inputModelo" class="col-sm-2 col-form-label">Tipo de avión: *</label>
                 <div class="col-sm-8">
                     <input *ngIf="avion.tipoAvion.fabricante" [disabled]="true"
                         [(ngModel)]="avion.tipoAvion.fabricante + '-' + avion.tipoAvion.modelo" type="text"
@@ -49,7 +49,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputFabricante" class="col-sm-2 col-form-label">Combustible:</label>
+                <label for="inputFabricante" class="col-sm-2 col-form-label">Combustible: *</label>
                 <div class="col-sm-8">
                     <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="avion.combustible" type="number"
                         class="form-control" id="inputFabricante">
@@ -62,7 +62,7 @@
         </div>
     </div>
     <div id="botones" class="row">
-        <div class="col-md-10">
+        <div class="col-md-7">
             <button id="btnCancelar" (click)="cancelar()" *ngIf="tipo != 'DETAIL'"
                 class="btn btn-outline-secondary">Cancelar</button>
             <span *ngIf="tipo == 'DETAIL'">
@@ -73,8 +73,8 @@
                 <button (click)="cambiarTipo('EDIT')" class="btn btn-outline-primary">Editar</button>
             </span>
         </div>
-        <div class="col-md-2">
-            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-primary"
+        <div class="col-md-5">
+            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-success"
                 [disabled]="avion.numeroSerie == null || avion.combustible == null ||
                 avion.tipoAvion.modelo == null || avion.combustible < 0 || avion.combustible > 100">Guardar</button>
         </div>

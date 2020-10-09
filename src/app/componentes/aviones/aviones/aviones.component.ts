@@ -18,8 +18,9 @@ export class AvionesComponent implements OnInit {
 
   filtro: string = '';
 
+
   constructor(
-    private avionService: AvionService
+    private avionService: AvionService,
   ) { }
 
   ngOnInit(): void {
@@ -31,11 +32,18 @@ export class AvionesComponent implements OnInit {
     this.cambiarPagina();
   }
 
+  onKey(e){
+    if (e.key == 'Enter'){
+      this.cambiarPagina();
+    }
+  }
+
 
   cambiarPagina(): void {
     this.avionService.getAviones(this.page, this.pageSize, this.filtro).subscribe(aviones => {
       this.aviones = aviones.items;
       this.avionesCount = aviones.count;
+      console.log(this.avionesCount)
       this.pages = Math.ceil(aviones.count / this.pageSize);
     });
   }

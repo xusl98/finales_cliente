@@ -30,6 +30,12 @@ export class CompaniasComponent implements OnInit {
     this.cambiarPagina();
   }
 
+  onKey(e){
+    if (e.key == 'Enter'){
+      this.cambiarPagina();
+    }
+  }
+
 
   cambiarPagina(): void {
     this.companiasService.getCompanias(this.page, this.pageSize, this.filtro).subscribe(companias => {

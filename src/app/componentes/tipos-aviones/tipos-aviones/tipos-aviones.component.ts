@@ -31,6 +31,11 @@ export class TiposAvionesComponent implements OnInit {
     this.cambiarPagina();
   }
 
+  onKey(e){
+    if (e.key == 'Enter'){
+      this.cambiarPagina();
+    }
+  }
 
   cambiarPagina(): void {
     this.tipoAvionService.getTiposAviones(this.page, this.pageSize, this.filtro).subscribe(tiposAviones => {

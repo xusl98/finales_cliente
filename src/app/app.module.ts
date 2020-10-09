@@ -16,6 +16,8 @@ import { AvionesDetailComponent } from './componentes/aviones/aviones-detail/avi
 import { ModalTiposAvionesComponent } from './componentes/aviones/modales/modal-tipos-aviones/modal-tipos-aviones.component';
 import { ModalCompaniasComponent } from './componentes/aviones/modales/modal-companias/modal-companias.component';
 import { ModalAvionesComponent } from './componentes/companias/Modal/modal-aviones.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,9 +38,12 @@ import { ModalAvionesComponent } from './componentes/companias/Modal/modal-avion
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

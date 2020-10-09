@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group row">
-                <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:</label>
+                <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:*</label>
                 <div class="col-sm-10">
                     <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="compania.nombre" type="text" class="form-control"
                         id="inputNombre">
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group row">
-                        <label for="inputTlf" class="col-sm-2 col-form-label">Teléfono:</label>
+                        <label for="inputTlf" class="col-sm-2 col-form-label">Teléfono:*</label>
                         <div class="col-sm-10">
                             <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="compania.telefono" type="number"
                                 class="form-control" id="inputTlf">
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group row">
-                        <label for="inputSede" class="col-sm-2 col-form-label">Sede:</label>
+                        <label for="inputSede" class="col-sm-2 col-form-label">Sede:*</label>
                         <div class="col-sm-10">
                             <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="compania.sede" type="text"
                                 class="form-control" id="inputSede">
@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group row">
-                        <label for="inputWeb" class="col-sm-2 col-form-label">Web:</label>
+                        <label for="inputWeb" class="col-sm-2 col-form-label">Web:*</label>
                         <div class="col-sm-10">
                             <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="compania.web" type="text"
                                 class="form-control" id="inputWeb">
@@ -80,7 +80,7 @@
         <button *ngIf="tipo=='DETAIL'" (click)="abrirModalAviones()" class="btn btn-secondary">Aviones</button>
     </div>
     <div id="botones" class="row">
-        <div class="col-md-10">
+        <div class="col-md-7">
             <button id="btnCancelar" (click)="cancelar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-secondary">Cancelar</button>
             <span *ngIf="tipo == 'DETAIL'">
                 <button (click)="volver()" class="btn btn-outline-secondary">Volver</button>
@@ -90,8 +90,8 @@
                 <button (click)="cambiarTipo('EDIT')" class="btn btn-outline-primary">Editar</button>
             </span>
         </div>
-        <div class="col-md-2">
-            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-primary"
+        <div class="col-md-5">
+            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-success"
              [disabled]="compania.iata == null || compania.oaci == null || compania.indicativo == null ||
              compania.nombre == null || compania.telefono == null || compania.sede == null || compania.web == null"
              >Guardar</button>

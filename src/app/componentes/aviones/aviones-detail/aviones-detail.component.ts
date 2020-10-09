@@ -26,7 +26,8 @@ export class AvionesDetailComponent implements OnInit {
     private location: Location,
     private router: Router,
     private tiposAvionesService: TipoAvionService,
-    private companiasService: CompaniasService
+    private companiasService: CompaniasService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -69,6 +70,7 @@ export class AvionesDetailComponent implements OnInit {
     if (await modalRef.result === 'borrar') {
       this.avionesService.eliminarAvion(this.avion.id).subscribe();
       this.volver();
+      this.toastr.success('Se ha borrado la compañía correctamente', '¡Éxito!');
     }
   }
   async abrirModalTiposAviones() {
@@ -117,6 +119,7 @@ export class AvionesDetailComponent implements OnInit {
       console.log(this.avion)
       this.avionesService.actualizarAvion(this.avion).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha editado la compañía correctamente', '¡Éxito!');
       });
     } else if (this.tipo == 'NEW') {
       this.avion.activo = true;
@@ -130,6 +133,7 @@ export class AvionesDetailComponent implements OnInit {
       console.log(this.avion)
       this.avionesService.crearAvion(this.avion).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha guardado la compañía correctamente', '¡Éxito!');
       });
     }
   }
@@ -148,6 +152,7 @@ import { TipoAvion } from 'src/app/models/tipoAvion';
 import { TipoAvionService } from 'src/app/servicios/tipo-avion/tipo-avion.service';
 import { ModalCompaniasComponent } from '../modales/modal-companias/modal-companias.component';
 import { CompaniasService } from 'src/app/servicios/companias.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngbd-modal-borrado',

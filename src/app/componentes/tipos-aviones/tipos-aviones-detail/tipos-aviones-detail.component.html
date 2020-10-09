@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputFabricante" class="col-sm-2 col-form-label">Fabricante:</label>
+                <label for="inputFabricante" class="col-sm-2 col-form-label">Fabricante:*</label>
                 <div class="col-sm-10">
                     <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="tipoAvion.fabricante" type="text" class="form-control"
                         id="inputFabricante">
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputModelo" class="col-sm-2 col-form-label">Modelo:</label>
+                <label for="inputModelo" class="col-sm-2 col-form-label">Modelo:*</label>
                 <div class="col-sm-10">
                     <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="tipoAvion.modelo" type="text" class="form-control"
                         id="inputModelo">
@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputModelo" class="col-sm-2 col-form-label">Alcance:</label>
+                <label for="inputModelo" class="col-sm-2 col-form-label">Alcance:*</label>
                 <div class="col-sm-10">
                     <select [disabled]="tipo == 'DETAIL'" class="form-control" [(ngModel)]="tipoAvion.alcance">
                         <option value="corto">Corto</option>
@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputAnio" class="col-sm-2 col-form-label">Año de comienzo de fabricación:</label>
+                <label for="inputAnio" class="col-sm-2 col-form-label">Año de comienzo de fabricación:*</label>
                 <div class="col-sm-10">
                     <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="tipoAvion.anioComienzoFabricacion" type="number" class="form-control"
                         id="inputAnio">
@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputModelo" class="col-sm-2 col-form-label">Tipo:</label>
+                <label for="inputModelo" class="col-sm-2 col-form-label">Tipo:*</label>
                 <div class="col-sm-10">
                     <select [disabled]="tipo == 'DETAIL'" class="form-control" [(ngModel)]="tipoAvion.tipo">
                         <option value="comercial">Comercial</option>
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group row">
-                <label for="inputModelo" class="col-sm-2 col-form-label">Fuselaje:</label>
+                <label for="inputModelo" class="col-sm-2 col-form-label">Fuselaje:*</label>
                 <div class="col-sm-10">
                     <select [disabled]="tipo == 'DETAIL'" class="form-control" [(ngModel)]="tipoAvion.fuselaje">
                         <option value="ancho">Ancho</option>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="botones" class="row">
-        <div class="col-md-10">
+        <div class="col-md-7">
             <button id="btnCancelar" (click)="cancelar()" *ngIf="tipo != 'DETAIL'"
                 class="btn btn-outline-secondary">Cancelar</button>
             <span *ngIf="tipo == 'DETAIL'">
@@ -89,8 +89,8 @@
                 <button (click)="cambiarTipo('EDIT')" class="btn btn-outline-primary">Editar</button>
             </span>
         </div>
-        <div class="col-md-2">
-            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-primary"
+        <div class="col-md-5">
+            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-success"
                 [disabled]="tipoAvion.fabricante == null || tipoAvion.modelo == null || tipoAvion.alcance == null ||
              tipoAvion.anioComienzoFabricacion == null || tipoAvion.tipo == null || tipoAvion.fuselaje == null ">Guardar</button>
         </div>

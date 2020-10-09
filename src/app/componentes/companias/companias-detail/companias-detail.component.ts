@@ -22,7 +22,7 @@ export class CompaniasDetailComponent implements OnInit {
     private companiasService: CompaniasService,
     private modalService: NgbModal,
     private location: Location,
-    private router: Router
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -63,6 +63,7 @@ export class CompaniasDetailComponent implements OnInit {
     if (await modalRef.result === 'borrar') {
       this.companiasService.eliminarCompania(this.compania.id).subscribe();
       this.volver();
+      this.toastr.success('Se ha borrado la compañía correctamente', '¡Éxito!');
     }
   }
   async abrirModalAviones() {
@@ -74,11 +75,13 @@ export class CompaniasDetailComponent implements OnInit {
     if (this.tipo == 'EDIT') {
       this.companiasService.actualizarCompania(this.compania).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha editado la compañía correctamente', '¡Éxito!');
       });
     } else if (this.tipo == 'NEW') {
       this.compania.activo = true;
       this.companiasService.crearCompania(this.compania).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha creado la compañía correctamente', '¡Éxito!');
       });
     }
   }
@@ -93,6 +96,7 @@ export class CompaniasDetailComponent implements OnInit {
 import { Type } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAvionesComponent } from '../Modal/modal-aviones.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngbd-modal-borrado',

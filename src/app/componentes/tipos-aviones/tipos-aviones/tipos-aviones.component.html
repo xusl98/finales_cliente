@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <input class="col-md-9" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="filtro"
-                        placeholder="Introduce el fabricante" />
+                        placeholder="Introduce el fabricante" (keyup)="onKey($event)"/>
                 </div>
                 <button (click)="cambiarPagina()" class="col-md-2 btn btn-outline-info">Buscar</button>
             </div>

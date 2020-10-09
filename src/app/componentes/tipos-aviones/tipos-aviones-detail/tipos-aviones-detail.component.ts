@@ -23,7 +23,7 @@ export class TiposAvionesDetailComponent implements OnInit {
     private tiposAvionesService: TipoAvionService,
     private modalService: NgbModal,
     private location: Location ,
-    private router: Router
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -61,6 +61,7 @@ export class TiposAvionesDetailComponent implements OnInit {
     if (await modalRef.result === 'borrar') {
       this.tiposAvionesService.eliminarTipoAvion(this.tipoAvion.id).subscribe();
       this.volver();
+      this.toastr.success('Se ha borrado la compañía correctamente', '¡Éxito!');
     }
   }
 
@@ -68,11 +69,13 @@ export class TiposAvionesDetailComponent implements OnInit {
     if (this.tipo == 'EDIT') {
       this.tiposAvionesService.actualizarTipoAvion(this.tipoAvion).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha editado la compañía correctamente', '¡Éxito!');
       });
     } else if (this.tipo == 'NEW') {
       this.tipoAvion.activo = true;
       this.tiposAvionesService.crearTipoAvion(this.tipoAvion).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha guardado la compañía correctamente', '¡Éxito!');
       });
     }
   }
@@ -86,6 +89,7 @@ export class TiposAvionesDetailComponent implements OnInit {
 
 import { Type } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngbd-modal-borrado',
