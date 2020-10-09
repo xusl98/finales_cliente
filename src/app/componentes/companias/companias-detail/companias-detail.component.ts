@@ -21,8 +21,8 @@ export class CompaniasDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private companiasService: CompaniasService,
     private modalService: NgbModal,
-    private location: Location ,
-    private router: Router
+    private location: Location,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -39,18 +39,18 @@ export class CompaniasDetailComponent implements OnInit {
         Object.assign(this.copiaCompania, this.compania);
         console.log(this.compania)
         console.log(this.compania.iata)
-        this.titulo = 'Editar compañía: ' + this.compania.nombre;
+        this.titulo = 'Compañía: ' + this.compania.nombre;
       });
     }
   }
 
 
-  cambiarTipo(tipo: string): void{
+  cambiarTipo(tipo: string): void {
     this.tipo = tipo;
   }
 
-  cancelar(): void{
-    if (this.tipo == 'EDIT'){
+  cancelar(): void {
+    if (this.tipo == 'EDIT') {
       this.cambiarTipo('DETAIL');
       Object.assign(this.compania, this.copiaCompania);
     } else {
@@ -58,36 +58,45 @@ export class CompaniasDetailComponent implements OnInit {
     }
   }
 
-  async abrirModal()  {
+  async abrirModal() {
     const modalRef = this.modalService.open(NgbdModalBorrado);
     if (await modalRef.result === 'borrar') {
       this.companiasService.eliminarCompania(this.compania.id).subscribe();
       this.volver();
+      this.toastr.success('Se ha borrado la compañía correctamente', '¡Éxito!');
     }
   }
+  async abrirModalAviones() {
+    const modalRef = this.modalService.open(ModalAvionesComponent);
+    modalRef.componentInstance.compania = this.compania;
+  }
 
-  guardar(): void{
+  guardar(): void {
     if (this.tipo == 'EDIT') {
       this.companiasService.actualizarCompania(this.compania).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha editado la compañía correctamente', '¡Éxito!');
       });
     } else if (this.tipo == 'NEW') {
       this.compania.activo = true;
       this.companiasService.crearCompania(this.compania).subscribe(compania => {
         this.location.back();
+        this.toastr.success('Se ha creado la compañía correctamente', '¡Éxito!');
       });
     }
   }
 
-  volver(): void{
+  volver(): void {
     this.location.back();
   }
-  
+
 
 }
 
 import { Type } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAvionesComponent } from '../Modal/modal-aviones.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngbd-modal-borrado',
@@ -108,6 +117,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   `
 })
 export class NgbdModalBorrado {
-  constructor(public modal: NgbActiveModal) {}
+  constructor(public modal: NgbActiveModal) { }
 
 }

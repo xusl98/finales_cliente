@@ -1,8 +1,6 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a href="#" class="navbar-brand" (click)="quitarTabActiva()" routerLink="/inicio">AirManager</a>
-  <button  class="navbar-toggler" type="button"  aria-expanded="false"
-    aria-label="Angular Navigation">
+  <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Angular Navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="AngularNav">
@@ -14,12 +12,15 @@
         <a ngbNavLink routerLink="/companias" class="nav-link">Compañías</a>
       </li>
       <li ngbNavItem class="nav-item">
-        <a ngbNavLink routerLink="/aviones" class="nav-link">Tipos de Aviones</a>
+        <a ngbNavLink routerLink="/aviones" class="nav-link">Aviones</a>
+      </li>
+      <li ngbNavItem class="nav-item">
+        <a ngbNavLink routerLink="/tipos-aviones" class="nav-link">Tipos de Aviones</a>
       </li>
     </ul>
   </div>
 </nav>
- 
- 
- 
+
+
+
 <router-outlet></router-outlet>

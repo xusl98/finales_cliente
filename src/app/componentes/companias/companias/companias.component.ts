@@ -22,13 +22,18 @@ export class CompaniasComponent implements OnInit {
   constructor(private companiasService: CompaniasService) { }
 
   ngOnInit(): void {
-    //obtener de la bd el numero de registros para sacar la cantidad de paginas y asignarlo a una variable
     this.cambiarPagina();
   }
 
   onPageChange(page): void {
     this.page = page;
     this.cambiarPagina();
+  }
+
+  onKey(e){
+    if (e.key == 'Enter'){
+      this.cambiarPagina();
+    }
   }
 
 

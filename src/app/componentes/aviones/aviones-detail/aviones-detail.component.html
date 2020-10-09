@@ -1,0 +1,82 @@
+<div id="container" class="container-fluid">
+    <div class="row">
+        <h1 id="tituloDetail">{{ titulo }}</h1>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group row">
+                <label for="inputFabricante" class="col-sm-2 col-form-label">Número de serie: *</label>
+                <div class="col-sm-8">
+                    <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="avion.numeroSerie" type="number"
+                        class="form-control" id="inputFabricante">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group row">
+                <label for="inputModelo" class="col-sm-2 col-form-label">Tipo de avión: *</label>
+                <div class="col-sm-8">
+                    <input *ngIf="avion.tipoAvion.fabricante" [disabled]="true"
+                        [(ngModel)]="avion.tipoAvion.fabricante + '-' + avion.tipoAvion.modelo" type="text"
+                        class="form-control" id="inputModelo">
+                        <input *ngIf="!avion.tipoAvion.fabricante" [disabled]="true" class="form-control" id="inputModelo" type="text">
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="abrirModalTiposAviones()" [disabled]="tipo == 'DETAIL'" class="btn btn-secondary">Elegir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group row">
+                <label for="inputModelo" class="col-sm-2 col-form-label">Compañía:</label>
+                <div class="col-sm-8">
+                    <input *ngIf="avion.compania.nombre" [disabled]="true"
+                        [(ngModel)]="avion.compania.nombre" type="text"
+                        class="form-control" id="inputModelo">
+                        <input *ngIf="!avion.compania.nombre" [disabled]="true" class="form-control" id="inputModelo" type="text">
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="abrirModalCompanias()" [disabled]="tipo == 'DETAIL'" class="btn btn-secondary">Elegir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group row">
+                <label for="inputFabricante" class="col-sm-2 col-form-label">Combustible: *</label>
+                <div class="col-sm-8">
+                    <input [disabled]="tipo == 'DETAIL'" [(ngModel)]="avion.combustible" type="number"
+                        class="form-control" id="inputFabricante">
+                        <small>El valor debe estar entre 0 y 100</small>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-sm-12"><ngb-progressbar type="dark" [value]="avion.combustible" [showValue]="true" [striped]="true" [animated]="tipo != 'DETAIL'" type="warning"></ngb-progressbar></p>
+            </div>
+        </div>
+    </div>
+    <div id="botones" class="row">
+        <div class="col-md-7">
+            <button id="btnCancelar" (click)="cancelar()" *ngIf="tipo != 'DETAIL'"
+                class="btn btn-outline-secondary">Cancelar</button>
+            <span *ngIf="tipo == 'DETAIL'">
+                <button (click)="volver()" class="btn btn-outline-secondary">Volver</button>
+                &nbsp;
+                <button (click)="abrirModal()" class="btn btn-outline-danger">Eliminar</button>
+                &nbsp;
+                <button (click)="cambiarTipo('EDIT')" class="btn btn-outline-primary">Editar</button>
+            </span>
+        </div>
+        <div class="col-md-5">
+            <button (click)="guardar()" *ngIf="tipo != 'DETAIL'" class="btn btn-outline-success"
+                [disabled]="avion.numeroSerie == null || avion.combustible == null ||
+                avion.tipoAvion.modelo == null || avion.combustible < 0 || avion.combustible > 100">Guardar</button>
+        </div>
+    </div>
+</div>
